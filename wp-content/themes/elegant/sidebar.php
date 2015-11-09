@@ -1,17 +1,20 @@
 <div id="tooplate_sidebar">
             <div class="sidbar_box">
-                <a href="#"><img src="<?php echo get_template_directory_uri() ?>/images/tooplate_250x250_ad.jpg" alt="250x250 ad" /></a>
+                <?php get_search_form() ?>
             </div>
             
             <div class="sidbar_box">
                 <h4>Categories</h4>
                 <ul class="tooplate_list">
-                    <li><a href="index.html">Aliquam ut arcu a metus</a></li>
-                    <li><a href="index.html">Donec eu ipsum lectus</a></li>
-                    <li><a href="index.html">Fusce at mauris massa</a></li>
-                    <li><a href="index.html">Mauris eleifend elit nec</a></li>
-                    <li><a href="index.html">Phasellus posuere ipsum</a></li>
-                    <li><a href="index.html">Sed venenatis dui eget</a></li>
+                    <?php
+                        foreach(get_categories() as $category){
+                    ?>
+                    <li>
+                        <a href="<?php echo get_category_link($category->term_id) ?>">
+                            <?php echo $category->name ?>
+                        </a>
+                    </li>
+                    <?php } ?>
                 </ul>
             </div>
             

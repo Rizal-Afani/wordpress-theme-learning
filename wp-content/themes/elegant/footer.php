@@ -11,12 +11,20 @@
             <div class="col_w280">
                 <h5>Pages</h5>
                 <ul class="tooplate_list">
-                    <li><a href="index.html">Etiam commodo</a></li>
-                    <li><a href="index.html">Praesent adipiscing</a></li>
-                    <li><a href="index.html">Duis sed justo</a></li>
-                    <li><a href="index.html">Mauris vulputate</a></li>
-                    <li><a href="index.html">Mauris dignissim</a></li>
-                    <li><a href="index.html">In adipiscing purus</a></li>
+                     <li>
+                        <a href="<?php echo esc_url(home_url('/')) ?>">
+                            Home
+                        </a>
+                    </li>
+                    <?php
+                        foreach(get_pages() as $page){
+                    ?>
+                    <li>
+                        <a href="<?php echo get_page_link($page->ID) ?>">
+                            <?php echo $page->post_title ?>
+                        </a>
+                    </li>
+                    <?php } ?>
                 </ul>
             </div>
             

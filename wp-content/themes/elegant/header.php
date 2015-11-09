@@ -47,10 +47,23 @@ $(window).load(function() {
     
     <div id="tooplate_menu">
         <ul>
-            <li><a href="index.html" class="current">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="contact.html" class="last">Contact</a></li>
+        	<?php $txt = is_home() ? 'class="current"' : ''; ?>
+            <li>
+            	<a href="<?php echo esc_url(home_url('/')) ?>" <?php echo $txt ?>>
+            		Home
+            	</a>
+            </li>
+            
+             <?php
+                foreach(get_pages() as $page){
+                	$txt = is_page($page->ID) ? 'class="current"' : '';
+            ?>
+           	<li>
+            	<a href="<?php echo get_page_link($page->ID) ?>" <?php echo $txt ?>>
+                	<?php echo $page->post_title ?>
+                </a>
+            </li>
+            <?php } ?>
         </ul>    	
     </div> <!-- end of tooplate_menu -->
     
